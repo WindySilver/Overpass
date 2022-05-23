@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/Level1.gd" type="Script" id=1]
+[ext_resource path="res://Obstacles/Obstacle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+obstacle_scene = ExtResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+speed = 1000
+velocity = Vector2( 100, 0 )
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 100, 500 )
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="SpawnArea" type="Position2D" parent="."]
+position = Vector2( 1000, 600 )
+
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_ObstacleTimer_timeout"]
+[connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]
