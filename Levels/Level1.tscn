@@ -1,14 +1,65 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Obstacles/Obstacle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/GameUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/PlaceholderTile.png" type="Texture" id=5]
 
-[node name="Main" type="Node"]
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="TileSet" id=1]
+0/name = "PlaceholderTile.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 32, 32, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "PlaceholderTile.png 1"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 32, 32, 64, 64 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 32, 32 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 obstacle_scene = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 90, 450 )
+mode = 3
 speed = 1000
 velocity = Vector2( 100, 0 )
 
@@ -19,11 +70,21 @@ position = Vector2( 100, 500 )
 wait_time = 5.0
 
 [node name="SpawnArea" type="Position2D" parent="."]
-position = Vector2( 1000, 600 )
+position = Vector2( 1000, 520 )
 
 [node name="LevelTimer" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
 
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+format = 1
+tile_data = PoolIntArray( 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0 )
+
+[connection signal="creating_overpass" from="Player" to="." method="_on_Player_creating_overpass"]
+[connection signal="decrease_time" from="Player" to="." method="timer_down"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_ObstacleTimer_timeout"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]
+[connection signal="start_game" from="UI" to="." method="new_game"]

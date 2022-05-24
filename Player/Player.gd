@@ -1,17 +1,24 @@
-extends Area2D
+extends RigidBody2D
 
 signal hit
+signal decrease_time
+signal creating_overpass
 
 export var speed = 400 # How fast the player will move (pixels/sec).
 export var velocity = Vector2(1, 0)
-export var time_penalty = 2
-onready var timer = get_node("/root/Main/LevelTimer")
 var screen_size # Size of the game window.
 var already_hit = false # Whether or not player already hit the current obstacle
+var may_move = false # Keeps player from moving when they shouldn't
 
 func start(pos):
 	position = pos
 	$CollisionShape2D.disabled = false
+	may_move = true
+	
+	
+func stop():
+	may_move = false
+	$AnimatedSprite.stop()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,28 +28,27 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if Input.is_action_pressed("create_overpass"):
-		print("Creating overpass")
-	
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	$AnimatedSprite.play()
+	if(may_move):
+		if Input.is_action_pressed("create_overpass"):
+			emit_signal("creating_overpass")
+		position += velocity * delta
+		position.x = clamp(position.x, 0, screen_size.x)
+		$AnimatedSprite.play()
 
 
-func _on_Player_body_entered(body):
-	if(!already_hit):
-		emit_signal("hit")
-		already_hit = true
+func _on_Player_body_entered(_body):
+	var bodies = get_colliding_bodies()
+	for body in bodies:
+		if body.is_in_group("obstacles"):
+			if(!already_hit):
+				emit_signal("hit")
+				already_hit = true
+				$CollisionTimer.start()
 
 
-func timer_down():
-	var time = timer.get_time_left() - time_penalty
-	timer.stop()
-	if (time <= 0):
-		time = 0.1
-	timer.set_wait_time(time)
-	timer.start()
+func hit_obstacle():
+	emit_signal("decrease_time")
 
 
-func _on_Player_body_exited(body):
+func _on_CollisionTimer_timeout():
 	already_hit = false
