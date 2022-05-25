@@ -27,4 +27,5 @@ func update_time(time):
 
 func _on_StartButton_pressed():
 	$StartButton.hide()
+	$Message.hide()
 	emit_signal("start_game")

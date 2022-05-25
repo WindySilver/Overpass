@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlaceholderTile.png-0b5a2b618fd2b85dc1c3db50bae64101.stex"
+path="res://.import/PlaceholderTileOverpass.png-8d3776349388b1ed24ed1d7c147a4ab8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PlaceholderTile.png"
-dest_files=[ "res://.import/PlaceholderTile.png-0b5a2b618fd2b85dc1c3db50bae64101.stex" ]
+source_file="res://Assets/PlaceholderTileOverpass.png"
+dest_files=[ "res://.import/PlaceholderTileOverpass.png-8d3776349388b1ed24ed1d7c147a4ab8.stex" ]
 
 [params]
 

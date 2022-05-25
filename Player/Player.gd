@@ -24,19 +24,20 @@ func stop():
 func _ready():
 	screen_size = get_viewport_rect().size
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
 	if(may_move):
 		if Input.is_action_pressed("create_overpass"):
 			emit_signal("creating_overpass")
-		position += velocity * delta
-		position.x = clamp(position.x, 0, screen_size.x)
-		$AnimatedSprite.play()
 
+func _integrate_forces(_state):
+		if(may_move):
+			set_applied_force(velocity)
+			$AnimatedSprite.play()
 
 func _on_Player_body_entered(_body):
+	print("Collision")
 	var bodies = get_colliding_bodies()
 	for body in bodies:
 		if body.is_in_group("obstacles"):

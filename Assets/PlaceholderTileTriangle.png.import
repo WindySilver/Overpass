@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlaceholderTile.png-0b5a2b618fd2b85dc1c3db50bae64101.stex"
+path="res://.import/PlaceholderTileTriangle.png-4eb17dd7c16b92d65f6125c11fbcc314.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PlaceholderTile.png"
-dest_files=[ "res://.import/PlaceholderTile.png-0b5a2b618fd2b85dc1c3db50bae64101.stex" ]
+source_file="res://Assets/PlaceholderTileTriangle.png"
+dest_files=[ "res://.import/PlaceholderTileTriangle.png-4eb17dd7c16b92d65f6125c11fbcc314.stex" ]
 
 [params]
 
