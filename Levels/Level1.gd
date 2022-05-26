@@ -11,6 +11,7 @@ export var level_time = 15
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.hide()
+	new_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,12 +24,11 @@ func game_over():
 	$UI.show_game_over()
 
 func new_game():
-	#get_tree().call_group("obstacles", "queue_free")
+	$OverpassTiles.clear()
 	$Player.start($StartPosition.position)
 	$LevelTimer.set_wait_time(level_time)
 	$LevelTimer.start()
 	$Player.show()
-
 
 func _on_LevelTimer_timeout():
 	game_over()
@@ -44,5 +44,5 @@ func timer_down():
 
 
 func _on_Player_creating_overpass():
-	var mouse_pos = $TileMap.world_to_map(get_local_mouse_position())
-	$TileMap.set_cellv(mouse_pos, 1)
+	var mouse_pos = $OverpassTiles.world_to_map(get_local_mouse_position())
+	$OverpassTiles.set_cellv(mouse_pos, 1)
