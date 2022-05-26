@@ -16,11 +16,10 @@ animations = [ {
 radius = 54.0
 height = 90.0769
 
-[node name="Player" type="RigidBody2D" groups=["player"]]
-mode = 2
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 3 )
 speed = 5000
-velocity = Vector2( 10000, 0 )
+velocity = Vector2( 100, 10 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -33,6 +32,5 @@ shape = SubResource( 2 )
 [node name="CollisionTimer" type="Timer" parent="."]
 wait_time = 4.0
 
-[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 [connection signal="hit" from="." to="." method="hit_obstacle"]
 [connection signal="timeout" from="CollisionTimer" to="." method="_on_CollisionTimer_timeout"]

@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends KinematicBody2D
 
 signal hit
 signal decrease_time
@@ -12,7 +12,6 @@ var may_move = false # Keeps player from moving when they shouldn't
 
 func start(pos):
 	position = pos
-	$CollisionShape2D.disabled = false
 	may_move = true
 	
 	
@@ -25,26 +24,23 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	
+func _process(delta):
 	if(may_move):
 		if Input.is_action_pressed("create_overpass"):
 			emit_signal("creating_overpass")
+		$AnimatedSprite.play()
 
-func _integrate_forces(_state):
-		if(may_move):
-			set_applied_force(velocity)
-			$AnimatedSprite.play()
-
-func _on_Player_body_entered(_body):
-	print("Collision")
-	var bodies = get_colliding_bodies()
-	for body in bodies:
-		if body.is_in_group("obstacles"):
-			if(!already_hit):
-				emit_signal("hit")
-				already_hit = true
-				$CollisionTimer.start()
+func _physics_process(delta):
+	if(may_move):
+		move_and_slide(velocity, Vector2(0, -7), false, 4, 20)
+		for i in get_slide_count():
+			var collision = get_slide_collision(i)
+			if collision.collider.is_in_group("obstacles"):
+				if(!already_hit):
+					emit_signal("hit")
+					already_hit = true
+					collision.collider.queue_free()
+					$CollisionTimer.start()
 
 
 func hit_obstacle():

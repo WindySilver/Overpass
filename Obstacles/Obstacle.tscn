@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 161.5, 217.5 )
 
-[node name="RigidBody2D" type="RigidBody2D" groups=["obstacles"]]
+[node name="Obstacle" type="RigidBody2D" groups=["obstacles"]]
 scale = Vector2( 0.25, 0.25 )
-mode = 1
+mode = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
