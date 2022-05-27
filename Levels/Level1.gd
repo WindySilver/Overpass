@@ -37,7 +37,7 @@ func _on_LevelTimer_timeout():
 func restore_obstacles():
 	var children = get_children()
 	for child in children:
-		if child.is_in_group("obstacles"):
+		if child.is_in_group("obstacles") or child.is_in_group("items"):
 			child.restore()
 
 func timer_down():

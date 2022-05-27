@@ -11,6 +11,7 @@ export var gravity = 50
 var screen_size # Size of the game window.
 var already_hit = false # Whether or not player already hit the current obstacle
 var may_move = false # Keeps player from moving when they shouldn't
+var items = {"Jewel": false, "Undefined": false}
 
 func start(pos):
 	position = pos
@@ -51,6 +52,14 @@ func _physics_process(_delta):
 					already_hit = true
 					collision.collider.hide_properly()
 					$CollisionTimer.start()
+			elif collision.collider.is_in_group("items"):
+				var col_name = collision.collider.name
+				match col_name:
+					"Jewel":
+						items.Jewel = true
+					_:
+						items.Undefined = true
+				collision.collider.hide_properly()
 			elif collision.collider.is_in_group("victory"):
 				emit_signal("victory")
 
