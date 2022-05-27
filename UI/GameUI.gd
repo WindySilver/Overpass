@@ -20,8 +20,15 @@ func show_message(text):
 
 func show_game_over():
 	show_message("Game Over")
+	$StartButton.text = "Play again"
 	$StartButton.show()
 
+func show_victory():
+	show_message("Victory!")
+	$StartButton.text = "Play again"
+	$StartButton.show()
+	
+	
 func update_time(time):
 	var add = str(time)
 	$TimeLabel.text = add.substr(0, add.find(".", 0)+2)

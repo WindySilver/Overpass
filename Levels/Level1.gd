@@ -25,6 +25,7 @@ func game_over():
 
 func new_game():
 	$OverpassTiles.clear()
+	restore_obstacles()
 	$Player.start($StartPosition.position)
 	$LevelTimer.set_wait_time(level_time)
 	$LevelTimer.start()
@@ -33,6 +34,11 @@ func new_game():
 func _on_LevelTimer_timeout():
 	game_over()
 
+func restore_obstacles():
+	var children = get_children()
+	for child in children:
+		if child.is_in_group("obstacles"):
+			child.restore()
 
 func timer_down():
 	var time = $LevelTimer.get_time_left() - time_penalty
@@ -46,3 +52,9 @@ func timer_down():
 func _on_Player_creating_overpass():
 	var mouse_pos = $OverpassTiles.world_to_map(get_local_mouse_position())
 	$OverpassTiles.set_cellv(mouse_pos, 1)
+
+
+func _on_Player_victory():
+	$Player.stop()
+	$LevelTimer.stop()
+	$UI.show_victory()

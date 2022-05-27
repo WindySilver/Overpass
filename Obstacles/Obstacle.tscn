@@ -9,6 +9,8 @@ extents = Vector2( 161.5, 217.5 )
 [node name="Obstacle" type="RigidBody2D" groups=["obstacles"]]
 scale = Vector2( 0.25, 0.25 )
 mode = 3
+contacts_reported = 6
+contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

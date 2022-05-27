@@ -14,3 +14,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func hide_properly():
+	$CollisionShape2D.disabled = true
+
+func restore():
+	$CollisionShape2D.disabled = false

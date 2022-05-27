@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Levels/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Obstacles/Obstacle.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/GameUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/PlaceholderTile.png" type="Texture" id=5]
 [ext_resource path="res://Assets/PlaceholderTileOverpass.png" type="Texture" id=6]
+[ext_resource path="res://Levels/VictoryPoint.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 64, 32, 0, 32, 0, 0, 64, 0 )
@@ -14,7 +15,6 @@ points = PoolVector2Array( 64, 32, 0, 32, 0, 0, 64, 0 )
 points = PoolVector2Array( 202.005, 67.0648, 35.9167, 68, 102.468, 37.5509, 165.546, 37.5509 )
 
 [sub_resource type="TileSet" id=1]
-resource_local_to_scene = true
 0/name = "PlaceholderTile.png 0"
 0/texture = ExtResource( 5 )
 0/tex_offset = Vector2( 0, 0 )
@@ -60,6 +60,7 @@ resource_local_to_scene = true
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
+level_time = 40
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 90, 450 )
@@ -74,7 +75,7 @@ position = Vector2( 991, 516 )
 position = Vector2( 1000, 520 )
 
 [node name="LevelTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 40.0
 one_shot = true
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
@@ -82,16 +83,21 @@ one_shot = true
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 64, 30 )
+show_collision = true
 format = 1
 tile_data = PoolIntArray( 1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1245202, 0, 0, 1245203, 0, 0, 1245204, 0, 0, 1245205, 0, 0, 1245206, 0, 0, 1245207, 0, 0, 1245208, 0, 0, 1245209, 0, 0, 1245210, 0, 0, 1245211, 0, 0, 1245212, 0, 0, 1245213, 0, 0, 1245214, 0, 0 )
 
 [node name="OverpassTiles" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 64, 30 )
+show_collision = true
 format = 1
-tile_data = PoolIntArray( 1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1245202, 0, 0, 1245203, 0, 0, 1245204, 0, 0, 1245205, 0, 0, 1245206, 0, 0, 1245207, 0, 0, 1245208, 0, 0, 1245209, 0, 0, 1245210, 0, 0, 1245211, 0, 0, 1245212, 0, 0, 1245213, 0, 0, 1245214, 0, 0 )
+
+[node name="VictoryPoint" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1924, 490 )
 
 [connection signal="creating_overpass" from="Player" to="." method="_on_Player_creating_overpass"]
 [connection signal="decrease_time" from="Player" to="." method="timer_down"]
+[connection signal="victory" from="Player" to="." method="_on_Player_victory"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]
 [connection signal="start_game" from="UI" to="." method="new_game"]
