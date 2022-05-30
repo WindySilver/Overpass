@@ -12,6 +12,7 @@ var screen_size # Size of the game window.
 var already_hit = false # Whether or not player already hit the current obstacle
 var may_move = false # Keeps player from moving when they shouldn't
 var items = {"Jewel": false, "Undefined": false}
+var still_in_air = false
 
 func start(pos):
 	position = pos
@@ -39,9 +40,15 @@ func _physics_process(_delta):
 		# TODO Set up a timer that allows gravity to remain in effect for the last of fall
 		# (collision detection starts too early because the RayCast has to be set too high to work properly with Tilemap)
 		if !$RayCast2D.is_colliding():
+			if !still_in_air:
+				still_in_air = true
 			velocity.y = gravity
 		else:
-			velocity.y = downward
+			if still_in_air:
+				if $GravityTimer.is_stopped():
+					$GravityTimer.start()
+			else:
+				velocity.y = downward
 		
 		var _move = move_and_slide(velocity, Vector2(0, 7), false, 4, 20)
 		for i in get_slide_count():
@@ -51,7 +58,6 @@ func _physics_process(_delta):
 					emit_signal("hit")
 					already_hit = true
 					collision.collider.hide_properly()
-					$CollisionTimer.start()
 			elif collision.collider.is_in_group("items"):
 				var col_name = collision.collider.name
 				match col_name:
@@ -70,3 +76,7 @@ func hit_obstacle():
 
 func _on_CollisionTimer_timeout():
 	already_hit = false
+
+
+func _on_GravityTimer_timeout():
+	still_in_air = false

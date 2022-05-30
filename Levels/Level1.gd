@@ -2,21 +2,19 @@ extends Node2D
 
 export var time_penalty = 2
 export var level_time = 15
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var stop_timer = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.hide()
+	load_game()
 	new_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$UI.update_time($LevelTimer.get_time_left())
+	if !stop_timer:
+		$UI.update_time($LevelTimer.get_time_left())
 
 func game_over():
 	$Player.stop()
@@ -55,6 +53,42 @@ func _on_Player_creating_overpass():
 
 
 func _on_Player_victory():
+	stop_timer = true
 	$Player.stop()
 	$LevelTimer.stop()
 	$UI.show_victory()
+	save_game()
+
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"jewel" : $Player.items.Jewel,
+		"undefined" : $Player.items.Undefined
+	}
+	return save_dict
+
+func save_game():
+	var save_game = File.new()
+	save_game.open("user://savegame.save", File.WRITE)
+	# Store the save dictionary as a new line in the save file.
+	save_game.store_line(to_json(save()))
+	save_game.close()
+
+func load_game():
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegame.save"):
+		return # Error! We don't have a save to load.
+
+	# Load the file line by line and process that dictionary to restore
+	# the object it represents.
+	save_game.open("user://savegame.save", File.READ)
+	while save_game.get_position() < save_game.get_len():
+		# Get the saved dictionary from the next line in the save file
+		var item_data = parse_json(save_game.get_line())
+		$Player.items.Jewel = item_data.jewel
+		$Player.items.Undefined = item_data.undefined
+		
+	save_game.close()
+	print($Player.items)

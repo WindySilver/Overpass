@@ -8,6 +8,7 @@ signal start_game
 func _ready():
 	$Message.hide()
 	$StartButton.hide()
+	$MainMenuButton.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,11 +23,13 @@ func show_game_over():
 	show_message("Game Over")
 	$StartButton.text = "Play again"
 	$StartButton.show()
+	$MainMenuButton.show()
 
 func show_victory():
 	show_message("Victory!")
 	$StartButton.text = "Play again"
 	$StartButton.show()
+	$MainMenuButton.show()
 	
 	
 func update_time(time):
@@ -36,4 +39,9 @@ func update_time(time):
 func _on_StartButton_pressed():
 	$StartButton.hide()
 	$Message.hide()
+	$MainMenuButton.hide()
 	emit_signal("start_game")
+
+
+func _on_MainMenuButton_pressed():
+	var _change = get_tree().change_scene("res://UI/MainMenu.tscn")
