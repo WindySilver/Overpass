@@ -16,7 +16,11 @@ func _process(_delta):
 	if !stop_timer:
 		$UI.update_time($LevelTimer.get_time_left())
 
+func _physics_process(_delta):
+	$Music.position = $Player.position
+
 func game_over():
+	$Music.stop()
 	UISound.play_fail_sound()
 	$Player.stop()
 	$LevelTimer.stop()
@@ -25,6 +29,7 @@ func game_over():
 func new_game():
 	$OverpassTiles.clear()
 	restore_obstacles()
+	$Music.play()
 	$Player.start($StartPosition.position)
 	$LevelTimer.set_wait_time(level_time)
 	$LevelTimer.start()
@@ -54,6 +59,7 @@ func _on_Player_creating_overpass():
 
 
 func _on_Player_victory():
+	$Music.stop()
 	stop_timer = true
 	$Player.stop()
 	$LevelTimer.stop()

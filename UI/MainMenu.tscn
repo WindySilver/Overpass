@@ -16,9 +16,9 @@ script = ExtResource( 2 )
 
 [node name="StartButton" type="Button" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.4
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.4
 margin_left = -66.5
 margin_top = -39.0
 margin_right = 66.5
@@ -28,9 +28,9 @@ text = "Start"
 
 [node name="ItemButton" type="Button" parent="."]
 anchor_left = 0.5
-anchor_top = 0.6
+anchor_top = 0.53
 anchor_right = 0.5
-anchor_bottom = 0.6
+anchor_bottom = 0.53
 margin_left = -77.0
 margin_top = -39.0
 margin_right = 77.0
@@ -40,9 +40,9 @@ text = "Items"
 
 [node name="CreditsButton" type="Button" parent="."]
 anchor_left = 0.5
-anchor_top = 0.7
+anchor_top = 0.66
 anchor_right = 0.5
-anchor_bottom = 0.7
+anchor_bottom = 0.66
 margin_left = -98.5
 margin_top = -39.0
 margin_right = 98.5
@@ -65,9 +65,9 @@ text = "Return"
 
 [node name="Text" type="Label" parent="."]
 anchor_left = 0.5
-anchor_top = 0.3
+anchor_top = 0.2
 anchor_right = 0.5
-anchor_bottom = 0.3
+anchor_bottom = 0.2
 margin_left = -147.5
 margin_top = -36.0
 margin_right = 147.5
@@ -81,9 +81,9 @@ align = 1
 [node name="Credits" type="Label" parent="."]
 visible = false
 anchor_left = 0.5
-anchor_top = 0.6
+anchor_top = 0.55
 anchor_right = 0.5
-anchor_bottom = 0.6
+anchor_bottom = 0.55
 margin_left = -147.5
 margin_top = -36.0
 margin_right = 147.5
@@ -98,7 +98,8 @@ Audio:
 \"Completed.wav\" by Kenneth_cooney licensed under CC0 1.0
 \"Level win.wav\" by Tuudurt licensed under CC0 1.0
 \"Trumpet sad chromatic wah wah.wav\" by Splice Sound licensed under CC0 1.0
-\"Door Handle Wood Clack.aif\" by RutgerMuller licensed under CC0 1.0"
+\"Door Handle Wood Clack.aif\" by RutgerMuller licensed under CC0 1.0
+\"Technology Space Ambient\" by AleXZavesa from Pixabay"
 align = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]

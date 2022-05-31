@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Obstacles/Obstacle.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/PlaceholderTileOverpass.png" type="Texture" id=6]
 [ext_resource path="res://Levels/VictoryPoint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Items/Item.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/technology-space-ambient-111307.mp3" type="AudioStream" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 64, 32, 0, 32, 0, 0, 64, 0 )
@@ -98,6 +99,11 @@ scale = Vector2( 0.25, 0.25 )
 
 [node name="VictoryPoint" parent="." instance=ExtResource( 7 )]
 position = Vector2( 3765, 489 )
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 960, 540 )
+stream = ExtResource( 9 )
+volume_db = -15.0
 
 [connection signal="creating_overpass" from="Player" to="." method="_on_Player_creating_overpass"]
 [connection signal="decrease_time" from="Player" to="." method="timer_down"]
