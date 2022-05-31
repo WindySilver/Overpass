@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Items/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/LiberationSerif-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/ItemUI.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 2 )
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Jewel" parent="." instance=ExtResource( 1 )]
+position = Vector2( 813, 520 )
+
+[node name="Undefined" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1066, 520 )
+script = null
+
+[node name="ReturnButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+margin_left = -93.0
+margin_top = -78.0
+margin_right = 93.0
+custom_fonts/font = SubResource( 1 )
+text = "Return"
+
+[node name="Text" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.3
+margin_left = -147.5
+margin_top = -36.0
+margin_right = 147.5
+margin_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+text = "Items"
+align = 1
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_ReturnButton_pressed"]

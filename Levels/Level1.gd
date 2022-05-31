@@ -91,4 +91,3 @@ func load_game():
 		$Player.items.Undefined = item_data.undefined
 		
 	save_game.close()
-	print($Player.items)
