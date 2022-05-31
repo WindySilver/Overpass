@@ -56,6 +56,7 @@ func _physics_process(_delta):
 			if collision.collider.is_in_group("obstacles"):
 				if(!already_hit):
 					emit_signal("hit")
+					collision.collider.play_audio()
 					already_hit = true
 					collision.collider.hide_properly()
 			elif collision.collider.is_in_group("items"):
@@ -65,9 +66,11 @@ func _physics_process(_delta):
 						items.Jewel = true
 					_:
 						items.Undefined = true
+				collision.collider.play_audio()
 				collision.collider.hide_properly()
 			elif collision.collider.is_in_group("victory"):
 				emit_signal("victory")
+				collision.collider.play_audio()
 
 
 func hit_obstacle():

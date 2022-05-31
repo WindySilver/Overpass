@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/104019__rutgermuller__door-handle-wood-clack.wav-3ada178b316b463b0ca0417d0c9e6409.sample"
+
+[deps]
+
+source_file="res://Assets/104019__rutgermuller__door-handle-wood-clack.wav"
+dest_files=[ "res://.import/104019__rutgermuller__door-handle-wood-clack.wav-3ada178b316b463b0ca0417d0c9e6409.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

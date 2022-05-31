@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/340934__soundsaregr8__generic-crowd-noise.wav-ff030548070a6ab69e887f0e93d9b372.sample"
+
+[deps]
+
+source_file="res://Assets/340934__soundsaregr8__generic-crowd-noise.wav"
+dest_files=[ "res://.import/340934__soundsaregr8__generic-crowd-noise.wav-ff030548070a6ab69e887f0e93d9b372.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

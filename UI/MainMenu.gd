@@ -1,11 +1,5 @@
 extends CanvasLayer
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,23 +11,29 @@ func _ready():
 
 
 func _on_StartButton_pressed():
+	UISound.play_sound()
 	var _change = get_tree().change_scene("res://Levels/Level1.tscn")
 
 
-func _on_ItemButton_pressed(): #TODO SHOW ITEMS
+func _on_ItemButton_pressed():
+	UISound.play_sound()
 	var _change = get_tree().change_scene("res://UI/ItemUI.tscn")
 
 func _on_CreditsButton_pressed():
+	UISound.play_sound()
 	$StartButton.hide()
 	$ItemButton.hide()
 	$CreditsButton.hide()
+	$Credits.show()
 	$ReturnButton.show()
-	$Text.text = "Credits\nDeveloper: Noora Jokela\nMade with Godot"
+	$Text.text = "Credits"
 
 
-func _on_ReturnButton_pressed(): #TODO RETURN TO MENU
+func _on_ReturnButton_pressed():
+	UISound.play_sound()
 	$StartButton.show()
 	$ItemButton.show()
 	$CreditsButton.show()
+	$Credits.hide()
 	$ReturnButton.hide()
 	$Text.text = "Overpass"

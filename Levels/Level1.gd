@@ -17,6 +17,7 @@ func _process(_delta):
 		$UI.update_time($LevelTimer.get_time_left())
 
 func game_over():
+	UISound.play_fail_sound()
 	$Player.stop()
 	$LevelTimer.stop()
 	$UI.show_game_over()

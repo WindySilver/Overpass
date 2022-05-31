@@ -1,10 +1,5 @@
 extends CanvasLayer
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var items = {"Jewel": false, "Undefined": false}
 
 # Called when the node enters the scene tree for the first time.
@@ -39,4 +34,5 @@ func load_game():
 #	pass
 
 func _on_ReturnButton_pressed():
+	UISound.play_sound()
 	var _change = get_tree().change_scene("res://UI/MainMenu.tscn")

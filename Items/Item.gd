@@ -15,6 +15,9 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func play_audio():
+	$Audio.play()
+
 func hide_properly():
 	$CollisionShape2D.disabled = true
 	self.hide()

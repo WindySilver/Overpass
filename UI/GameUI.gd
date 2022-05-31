@@ -37,6 +37,7 @@ func update_time(time):
 	$TimeLabel.text = add.substr(0, add.find(".", 0)+2)
 
 func _on_StartButton_pressed():
+	UISound.play_sound()
 	$StartButton.hide()
 	$Message.hide()
 	$MainMenuButton.hide()
@@ -44,4 +45,5 @@ func _on_StartButton_pressed():
 
 
 func _on_MainMenuButton_pressed():
+	UISound.play_sound()
 	var _change = get_tree().change_scene("res://UI/MainMenu.tscn")

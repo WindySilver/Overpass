@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CanvasLayer
 
 
 # Declare member variables here. Examples:
@@ -11,10 +11,9 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func play_audio():
+func play_sound():
 	$Audio.play()
+
+
+func play_fail_sound():
+	$FailAudio.play()
