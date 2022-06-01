@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/RunPlaceholder1.png" type="Texture" id=1]
-[ext_resource path="res://Assets/RunPlaceholder0.png" type="Texture" id=2]
+[ext_resource path="res://Assets/LisaAnimation2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/LisaAnimation0.png" type="Texture" id=2]
 [ext_resource path="res://Player/Player.gd" type="Script" id=3]
+[ext_resource path="res://Assets/LisaAnimation1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/LisaAnimation3.png" type="Texture" id=5]
+[ext_resource path="res://Assets/LisaAnimation4.png" type="Texture" id=6]
+[ext_resource path="res://Assets/LisaAnimation5.png" type="Texture" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "default",
-"speed": 3.0
+"speed": 7.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
