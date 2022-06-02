@@ -12,7 +12,7 @@ func _ready():
 
 func _on_StartButton_pressed():
 	UISound.play_sound()
-	var _change = get_tree().change_scene("res://Levels/Level1.tscn")
+	var _change = get_tree().change_scene("res://UI/LevelSelection.tscn")
 
 
 func _on_ItemButton_pressed():
