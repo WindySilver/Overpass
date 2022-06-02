@@ -13,7 +13,3 @@ func _ready():
 
 func play_sound():
 	$Audio.play()
-
-
-func play_fail_sound():
-	$FailAudio.play()

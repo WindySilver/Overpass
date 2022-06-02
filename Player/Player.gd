@@ -9,7 +9,6 @@ export var downward = 10 # Speed downward (for going on the ground), often the s
 export var velocity = Vector2(1, 0)
 export var gravity = 50
 var screen_size # Size of the game window.
-var already_hit = false # Whether or not player already hit the current obstacle
 var may_move = false # Keeps player from moving when they shouldn't
 var items = {"Jewel": false, "Undefined": false}
 var still_in_air = false
@@ -54,11 +53,10 @@ func _physics_process(_delta):
 		for i in get_slide_count():
 			var collision = get_slide_collision(i)
 			if collision.collider.is_in_group("obstacles"):
-				if(!already_hit):
-					emit_signal("hit")
-					collision.collider.play_audio()
-					already_hit = true
-					collision.collider.hide_properly()
+				print("hit")
+				emit_signal("hit")
+				collision.collider.play_audio()
+				collision.collider.hide_properly()
 			elif collision.collider.is_in_group("items"):
 				var col_name = collision.collider.name
 				match col_name:
@@ -75,10 +73,6 @@ func _physics_process(_delta):
 
 func hit_obstacle():
 	emit_signal("decrease_time")
-
-
-func _on_CollisionTimer_timeout():
-	already_hit = false
 
 
 func _on_GravityTimer_timeout():

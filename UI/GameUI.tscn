@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/LiberationSerif-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/GameUI.gd" type="Script" id=2]
+[ext_resource path="res://ButtonTheme.tres" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -30,6 +31,7 @@ margin_right = 66.5
 margin_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
 text = "Start"
 
@@ -44,6 +46,7 @@ margin_right = 66.5
 margin_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
 text = "Main menu"
 

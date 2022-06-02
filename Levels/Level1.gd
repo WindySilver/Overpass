@@ -13,20 +13,25 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if Input.is_action_pressed("restart"):
+		new_game()
+	
 	if !stop_timer:
 		$UI.update_time($LevelTimer.get_time_left())
 
 func _physics_process(_delta):
 	$Music.position = $Player.position
+	$FailAudio.position = $Player.position
 
 func game_over():
 	$Music.stop()
-	UISound.play_fail_sound()
+	play_fail_sound()
 	$Player.stop()
 	$LevelTimer.stop()
 	$UI.show_game_over()
 
 func new_game():
+	stop_timer = false
 	$OverpassTiles.clear()
 	restore_obstacles()
 	$Music.play()
@@ -98,3 +103,7 @@ func load_game():
 		$Player.items.Undefined = item_data.undefined
 		
 	save_game.close()
+
+
+func play_fail_sound():
+	$FailAudio.play()
