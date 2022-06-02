@@ -1,33 +1,43 @@
 extends KinematicBody2D
 
+
 signal decrease_time(penalty)
 signal creating_overpass
 signal victory
 
+
 export var downward = 10 # Speed downward (for going on the ground), often the same as velocity.y
-export var velocity = Vector2(1, 0)
-export var gravity = 50
+export var velocity = Vector2(1, 0) # The player's speed
+export var gravity = 50 # The gravity force pulling the player down when falling
 var screen_size # Size of the game window.
 var may_move = false # Keeps player from moving when they shouldn't
-var items = {"Jewel": false, "Undefined": false}
-var still_in_air = false
+var items = {"Jewel": false, "Undefined": false} # The items the player can collect
+var still_in_air = false # Whether or not the player is still falling
 
+
+# Sets the player character in the starting position and allows it to move
 func start(pos):
 	position = pos
 	may_move = true
-	
-	
+
+
+# Stops the player character from moving
 func stop():
 	may_move = false
 	$AnimatedSprite.stop()
-	
+
+
+# Allows the player character to start moving from its current position
+# (different from start, which always puts the player to the same spot)
 func unstop():
 	may_move = true
 	$AnimatedSprite.play()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -36,10 +46,11 @@ func _process(_delta):
 			emit_signal("creating_overpass")
 		$AnimatedSprite.play()
 
+
+# Processes physics things
 func _physics_process(_delta):
 	if(may_move):
 		# This needs to be done to have any semblance of "real" gravity while not getting stuck at overpass corners
-		# TODO Set up a timer that allows gravity to remain in effect for the last of fall
 		# (collision detection starts too early because the RayCast has to be set too high to work properly with Tilemap)
 		if !$RayCast2D.is_colliding():
 			if !still_in_air:
@@ -51,7 +62,8 @@ func _physics_process(_delta):
 					$GravityTimer.start()
 			else:
 				velocity.y = downward
-		
+
+		# Move the player and handle any potential collisions
 		var _move = move_and_slide(velocity, Vector2(0, 7), false, 4, 20)
 		for i in get_slide_count():
 			var collision = get_slide_collision(i)
@@ -73,9 +85,11 @@ func _physics_process(_delta):
 				collision.collider.play_audio()
 
 
+# Handle player hitting an obstacle
 func hit_obstacle(var penalty):
 	emit_signal("decrease_time", penalty)
 
 
+# Initiated restoring the downward velocity to keep player able to get past overpasses
 func _on_GravityTimer_timeout():
 	still_in_air = false

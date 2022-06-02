@@ -1,24 +1,19 @@
 extends CanvasLayer
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
+# Goes to the level selection view when the button for it is pressed
 func _on_StartButton_pressed():
 	UISound.play_sound()
 	var _change = get_tree().change_scene("res://UI/LevelSelection.tscn")
 
 
+# Goes to the item view when the button for it is pressed
 func _on_ItemButton_pressed():
 	UISound.play_sound()
 	var _change = get_tree().change_scene("res://UI/ItemUI.tscn")
 
+
+# Goes to the credits view when the button for it is pressed
 func _on_CreditsButton_pressed():
 	UISound.play_sound()
 	$StartButton.hide()
@@ -29,6 +24,7 @@ func _on_CreditsButton_pressed():
 	$Text.text = "Credits"
 
 
+# Returns to the main menu when the button for it is pressed
 func _on_ReturnButton_pressed():
 	UISound.play_sound()
 	$StartButton.show()

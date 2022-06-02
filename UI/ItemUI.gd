@@ -1,18 +1,23 @@
 extends CanvasLayer
 
-var items = {"Jewel": false, "Undefined": false}
+var items = {"Jewel": false, "Undefined": false} # The list of items the player can collect
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_game()
 	hide_unfound_items()
 
+
+# Hides the items that have not been found by the player
 func hide_unfound_items():
 	if !items.Jewel:
 		$Jewel.hide()
 	if !items.Undefined:
 		$Undefined.hide()
 
+
+# Loads the save file to check for found items
 func load_game():
 	var save_game = File.new()
 	if not save_game.file_exists("user://savegame.save"):
@@ -29,10 +34,8 @@ func load_game():
 		
 	save_game.close()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
+# Returns to the main menu when the return button is pressed
 func _on_ReturnButton_pressed():
 	UISound.play_sound()
 	var _change = get_tree().change_scene("res://UI/MainMenu.tscn")

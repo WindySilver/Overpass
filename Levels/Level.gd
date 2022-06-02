@@ -1,7 +1,7 @@
 extends Node2D
 
-export var time_penalty = 2
-export var level_time = 15
+export var level_time = 15 # The time the player has to clear the level before game over
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,21 +19,29 @@ func _process(_delta):
 	
 	$UI.update_time($LevelTimer.get_time_left())
 
+# Processes physics things and in this case things that are related to things
+# processed by their own _physics_process functions
 func _physics_process(_delta):
 	$Music.position = $Player.position
 	$FailAudio.position = $Player.position
 
+
+# Pauses the game and brings up the pause menu
 func pause_game():
 	$Music.set_stream_paused(true)
 	$Player.stop()
 	$LevelTimer.set_paused(true)
 	$UI.show_pause_menu()
-	
+
+
+# Unpauses the game and hides the pause menu
 func unpause_game():
 	$Music.set_stream_paused(false)
 	$Player.unstop()
 	$LevelTimer.set_paused(false)
 
+
+# Handles things that need to be done when the player fails the level
 func game_over():
 	$LevelTimer.set_paused(true)
 	$Music.stop()
@@ -41,25 +49,33 @@ func game_over():
 	$Player.stop()
 	$UI.show_game_over()
 
+
+# Starts/restarts the level
 func new_game():
 	$LevelTimer.set_paused(false)
 	$OverpassTiles.clear()
-	restore_obstacles()
+	restore_obstacles_items()
 	$Music.play()
 	$Player.start($StartPosition.position)
 	$LevelTimer.set_wait_time(level_time)
 	$LevelTimer.start()
 	$Player.show()
 
+
+# Handles what happens when the time runs out
 func _on_LevelTimer_timeout():
 	game_over()
 
-func restore_obstacles():
+
+# Restores obstacles and items at the (re)start of the game
+func restore_obstacles_items():
 	var children = get_children()
 	for child in children:
 		if child.is_in_group("obstacles") or child.is_in_group("items"):
 			child.restore()
 
+
+# Decreases remaining time by the obstacle's time penalty when player hits it
 func timer_down(var penalty):
 	var time = $LevelTimer.get_time_left() - penalty
 	$LevelTimer.stop()
@@ -69,11 +85,13 @@ func timer_down(var penalty):
 	$LevelTimer.start()
 
 
+# Creates overpasses to the cursor's position when the button for it is pressed
 func _on_Player_creating_overpass():
 	var mouse_pos = $OverpassTiles.world_to_map(get_local_mouse_position())
 	$OverpassTiles.set_cellv(mouse_pos, 1)
 
 
+# Handles things that need to be done when the player clears the level
 func _on_Player_victory():
 	$LevelTimer.set_paused(true)
 	$Music.stop()
@@ -82,6 +100,7 @@ func _on_Player_victory():
 	save_game()
 
 
+# Saves the item data
 func save():
 	var save_dict = {
 		"filename" : get_filename(),
@@ -91,6 +110,8 @@ func save():
 	}
 	return save_dict
 
+
+# Saves the game's progress (namely item data)
 func save_game():
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
@@ -98,6 +119,8 @@ func save_game():
 	save_game.store_line(to_json(save()))
 	save_game.close()
 
+
+# Loads the game's save file (namely item data)
 func load_game():
 	var save_game = File.new()
 	if not save_game.file_exists("user://savegame.save"):
@@ -115,5 +138,6 @@ func load_game():
 	save_game.close()
 
 
+# Plays the fail sound when player gets game over
 func play_fail_sound():
 	$FailAudio.play()
