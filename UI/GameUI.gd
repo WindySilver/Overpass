@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 signal start_game
-
+signal unpause
 
 
 # Called when the node enters the scene tree for the first time.
@@ -47,3 +47,16 @@ func _on_StartButton_pressed():
 func _on_MainMenuButton_pressed():
 	UISound.play_sound()
 	var _change = get_tree().change_scene("res://UI/MainMenu.tscn")
+
+func show_pause_menu():
+	show_message("Paused")
+	$ResumeButton.show()
+	$MainMenuButton.show()
+	
+
+
+func _on_ResumeButton_pressed():
+	$Message.hide()
+	$MainMenuButton.hide()
+	$ResumeButton.hide()
+	emit_signal("unpause")

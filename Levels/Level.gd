@@ -2,7 +2,6 @@ extends Node2D
 
 export var time_penalty = 2
 export var level_time = 15
-var stop_timer = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,23 +14,35 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_pressed("restart"):
 		new_game()
+	if Input.is_action_pressed("pause"):
+		pause_game()
 	
-	if !stop_timer:
-		$UI.update_time($LevelTimer.get_time_left())
+	$UI.update_time($LevelTimer.get_time_left())
 
 func _physics_process(_delta):
 	$Music.position = $Player.position
 	$FailAudio.position = $Player.position
 
+func pause_game():
+	$Music.set_stream_paused(true)
+	$Player.stop()
+	$LevelTimer.set_paused(true)
+	$UI.show_pause_menu()
+	
+func unpause_game():
+	$Music.set_stream_paused(false)
+	$Player.unstop()
+	$LevelTimer.set_paused(false)
+
 func game_over():
+	$LevelTimer.set_paused(true)
 	$Music.stop()
 	play_fail_sound()
 	$Player.stop()
-	$LevelTimer.stop()
 	$UI.show_game_over()
 
 func new_game():
-	stop_timer = false
+	$LevelTimer.set_paused(false)
 	$OverpassTiles.clear()
 	restore_obstacles()
 	$Music.play()
@@ -49,8 +60,8 @@ func restore_obstacles():
 		if child.is_in_group("obstacles") or child.is_in_group("items"):
 			child.restore()
 
-func timer_down():
-	var time = $LevelTimer.get_time_left() - time_penalty
+func timer_down(var penalty):
+	var time = $LevelTimer.get_time_left() - penalty
 	$LevelTimer.stop()
 	if (time <= 0):
 		time = 0.1
@@ -64,10 +75,9 @@ func _on_Player_creating_overpass():
 
 
 func _on_Player_victory():
+	$LevelTimer.set_paused(true)
 	$Music.stop()
-	stop_timer = true
 	$Player.stop()
-	$LevelTimer.stop()
 	$UI.show_victory()
 	save_game()
 

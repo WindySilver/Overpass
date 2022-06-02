@@ -110,15 +110,18 @@ position = Vector2( 5023, 516 )
 
 [node name="Obstacle5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 5124, 516 )
+penalty = 3
 
 [node name="Obstacle7" parent="." instance=ExtResource( 2 )]
 position = Vector2( 7264, 516 )
 
 [node name="Obstacle8" parent="." instance=ExtResource( 2 )]
 position = Vector2( 7528, 516 )
+penalty = 3
 
 [node name="Obstacle9" parent="." instance=ExtResource( 2 )]
 position = Vector2( 7800, 516 )
+penalty = 4
 
 [node name="SpawnArea" type="Position2D" parent="."]
 position = Vector2( 1000, 520 )
@@ -162,6 +165,7 @@ stream = ExtResource( 10 )
 
 [node name="Obstacle10" parent="." instance=ExtResource( 11 )]
 position = Vector2( 5858, 445 )
+penalty = 5
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
@@ -171,10 +175,12 @@ margin_top = 80.0
 margin_right = 849.0
 margin_bottom = 131.0
 custom_fonts/font = SubResource( 7 )
-text = "Press RMB or equivalent to restart"
+text = "Press RMB or equivalent to restart
+Press MMB or equivalent to pause"
 
 [connection signal="creating_overpass" from="Player" to="." method="_on_Player_creating_overpass"]
 [connection signal="decrease_time" from="Player" to="." method="timer_down"]
 [connection signal="victory" from="Player" to="." method="_on_Player_victory"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]
 [connection signal="start_game" from="UI" to="." method="new_game"]
+[connection signal="unpause" from="UI" to="." method="unpause_game"]

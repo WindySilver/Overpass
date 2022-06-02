@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
-signal hit
-signal decrease_time
+signal decrease_time(penalty)
 signal creating_overpass
 signal victory
 
@@ -21,6 +20,10 @@ func start(pos):
 func stop():
 	may_move = false
 	$AnimatedSprite.stop()
+	
+func unstop():
+	may_move = true
+	$AnimatedSprite.play()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,8 +56,7 @@ func _physics_process(_delta):
 		for i in get_slide_count():
 			var collision = get_slide_collision(i)
 			if collision.collider.is_in_group("obstacles"):
-				print("hit")
-				emit_signal("hit")
+				hit_obstacle(collision.collider.penalty)
 				collision.collider.play_audio()
 				collision.collider.hide_properly()
 			elif collision.collider.is_in_group("items"):
@@ -71,8 +73,8 @@ func _physics_process(_delta):
 				collision.collider.play_audio()
 
 
-func hit_obstacle():
-	emit_signal("decrease_time")
+func hit_obstacle(var penalty):
+	emit_signal("decrease_time", penalty)
 
 
 func _on_GravityTimer_timeout():

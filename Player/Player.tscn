@@ -46,5 +46,4 @@ enabled = true
 cast_to = Vector2( 0, 120 )
 collide_with_areas = true
 
-[connection signal="hit" from="." to="." method="hit_obstacle"]
 [connection signal="timeout" from="GravityTimer" to="." method="_on_GravityTimer_timeout"]

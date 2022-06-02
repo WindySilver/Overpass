@@ -35,6 +35,22 @@ theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
 text = "Start"
 
+[node name="ResumeButton" type="Button" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -66.5
+margin_top = -39.0
+margin_right = 66.5
+margin_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "Resume"
+
 [node name="MainMenuButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.7
@@ -63,4 +79,5 @@ custom_fonts/font = SubResource( 1 )
 align = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
