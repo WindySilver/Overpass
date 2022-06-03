@@ -153,7 +153,7 @@ position = Vector2( 2070, 131 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="VictoryPoint" parent="." instance=ExtResource( 7 )]
-position = Vector2( 8912, 489 )
+position = Vector2( 8912, 473 )
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 540 )

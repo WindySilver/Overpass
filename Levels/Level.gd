@@ -120,7 +120,9 @@ func save():
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
 		"jewel" : $Player.items.Jewel,
-		"undefined" : $Player.items.Undefined
+		"undefined" : $Player.items.Undefined,
+		"book" : $Player.items.Book,
+		"coin" : $Player.items.Coin
 	}
 	return save_dict
 
@@ -148,7 +150,9 @@ func load_game():
 		var item_data = parse_json(save_game.get_line())
 		$Player.items.Jewel = item_data.jewel
 		$Player.items.Undefined = item_data.undefined
-		
+		$Player.items.Book = item_data.book
+		$Player.items.Coin = item_data.coin
+
 	save_game.close()
 
 

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/LiberationSerif-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=2]
-[ext_resource path="res://ButtonTheme.tres" type="Theme" id=3]
+[ext_resource path="res://UI/ButtonTheme.tres" type="Theme" id=3]
 
 [sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0, 1 )

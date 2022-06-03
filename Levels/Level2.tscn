@@ -7,11 +7,11 @@
 [ext_resource path="res://Assets/PlaceholderTile.png" type="Texture" id=5]
 [ext_resource path="res://Assets/PlaceholderTileOverpass.png" type="Texture" id=6]
 [ext_resource path="res://Levels/VictoryPoint.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Items/Item.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Items/Book.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/my-lonely-journey-11299.mp3" type="AudioStream" id=9]
 [ext_resource path="res://Assets/369873__splicesound__trumpet-sad-chromatic-wah-wah.wav" type="AudioStream" id=10]
 [ext_resource path="res://Obstacles/Bystanders.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Items/Undefined.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/LiberationSerif-Regular.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Obstacles/Birb.tscn" type="PackedScene" id=14]
 
@@ -203,21 +203,13 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 64, 30 )
 format = 1
 
-[node name="Undefined" parent="." instance=ExtResource( 12 )]
-position = Vector2( 7278, 127 )
-scale = Vector2( 0.25, 0.25 )
-
-[node name="Jewel" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1426, 423 )
-scale = Vector2( 0.25, 0.25 )
-
 [node name="VictoryPoint" parent="." instance=ExtResource( 7 )]
-position = Vector2( 8912, 489 )
+position = Vector2( 8912, 472 )
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 540 )
 stream = ExtResource( 9 )
-volume_db = -15.0
+volume_db = -10.0
 
 [node name="FailAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 540 )
@@ -280,12 +272,6 @@ position = Vector2( 9445, -42 )
 [node name="Obstacle21" parent="." instance=ExtResource( 14 )]
 position = Vector2( 8136, -123 )
 
-[node name="Obstacle22" parent="." instance=ExtResource( 14 )]
-position = Vector2( 8572, 4 )
-
-[node name="Obstacle23" parent="." instance=ExtResource( 14 )]
-position = Vector2( 8368, -44 )
-
 [node name="Obstacle24" parent="." instance=ExtResource( 14 )]
 position = Vector2( 8663, -190 )
 
@@ -319,12 +305,6 @@ position = Vector2( 5228, -333 )
 [node name="Obstacle31" parent="." instance=ExtResource( 14 )]
 position = Vector2( 7727, -371 )
 
-[node name="Obstacle32" parent="." instance=ExtResource( 14 )]
-position = Vector2( 9190, 248 )
-
-[node name="Obstacle33" parent="." instance=ExtResource( 14 )]
-position = Vector2( 9279, -219 )
-
 [node name="Obstacle34" parent="." instance=ExtResource( 14 )]
 position = Vector2( 6335, 259 )
 
@@ -357,6 +337,12 @@ position = Vector2( 7676, 271 )
 
 [node name="Obstacle44" parent="." instance=ExtResource( 14 )]
 position = Vector2( 7348, -103 )
+
+[node name="Book" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1440, 401 )
+
+[node name="Coin" parent="." instance=ExtResource( 12 )]
+position = Vector2( 7287, 106 )
 
 [connection signal="creating_overpass" from="Player" to="." method="_on_Player_creating_overpass"]
 [connection signal="decrease_time" from="Player" to="." method="timer_down"]
