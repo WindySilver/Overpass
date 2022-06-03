@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Items/Item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/LiberationSerif-Regular.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Items/Undefined.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Items/Book.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Items/Heart.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Items/Floppy.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0, 1 )
@@ -46,7 +48,7 @@ texture = SubResource( 5 )
 expand = true
 
 [node name="Jewel" parent="." instance=ExtResource( 1 )]
-position = Vector2( 247, 520 )
+position = Vector2( 99, 520 )
 
 [node name="Text2" type="Label" parent="Jewel"]
 anchor_left = 0.5
@@ -81,9 +83,9 @@ anchor_left = 0.5
 anchor_top = 0.3
 anchor_right = 0.5
 anchor_bottom = 0.3
-margin_left = -861.0
+margin_left = -1009.0
 margin_top = 278.0
-margin_right = -566.0
+margin_right = -714.0
 margin_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -96,9 +98,9 @@ anchor_left = 0.5
 anchor_top = 0.3
 anchor_right = 0.5
 anchor_bottom = 0.3
-margin_left = -473.0
+margin_left = -714.0
 margin_top = 278.0
-margin_right = -178.0
+margin_right = -419.0
 margin_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -119,7 +121,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Return"
 
 [node name="Undefined" parent="." instance=ExtResource( 5 )]
-position = Vector2( 626, 520 )
+position = Vector2( 385, 520 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Text3" type="Label" parent="Undefined"]
@@ -137,15 +139,15 @@ what it is."
 align = 1
 
 [node name="Book" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1124, 520 )
+position = Vector2( 713, 520 )
 scale = Vector2( 0.5, 0.6 )
 
 [node name="BookText" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 29.0
+margin_left = -391.0
 margin_top = 683.0
-margin_right = 357.0
+margin_right = -45.0
 margin_bottom = 788.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -158,9 +160,9 @@ anchor_left = 0.5
 anchor_top = 0.3
 anchor_right = 0.5
 anchor_bottom = 0.3
-margin_left = 29.0
+margin_left = -382.0
 margin_top = 278.0
-margin_right = 324.0
+margin_right = -87.0
 margin_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -169,15 +171,15 @@ text = "Book"
 align = 1
 
 [node name="Coin" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1519, 519 )
+position = Vector2( 1057, 519 )
 scale = Vector2( 0.4, 0.4 )
 
 [node name="CoinText" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 417.0
+margin_left = -45.0
 margin_top = 683.0
-margin_right = 745.0
+margin_right = 283.0
 margin_bottom = 788.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -190,14 +192,77 @@ anchor_left = 0.5
 anchor_top = 0.3
 anchor_right = 0.5
 anchor_bottom = 0.3
-margin_left = 417.0
+margin_left = -45.0
 margin_top = 278.0
-margin_right = 712.0
+margin_right = 250.0
 margin_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 2 )
 text = "Coin"
+align = 1
+
+[node name="Heart" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1379, 520 )
+
+[node name="Text4" type="Label" parent="Heart"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -272.0
+margin_top = 326.0
+margin_right = 249.0
+margin_bottom = 635.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 6 )
+text = "Cold and still."
+align = 1
+
+[node name="HeaderHeart" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.3
+margin_left = 271.0
+margin_top = 278.0
+margin_right = 566.0
+margin_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+text = "Heart"
+align = 1
+
+[node name="Floppy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1717, 518 )
+
+[node name="Text5" type="Label" parent="Floppy"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -290.0
+margin_top = 330.0
+margin_right = 279.0
+margin_bottom = 639.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 6 )
+text = "Doesn't save
+your game."
+align = 1
+
+[node name="HeaderFloppy" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.3
+margin_left = 612.0
+margin_top = 278.0
+margin_right = 931.0
+margin_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+text = "Floppy Disk"
 align = 1
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_ReturnButton_pressed"]

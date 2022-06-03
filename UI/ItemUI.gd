@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var items = {"Jewel": false, "Undefined": false, "Book": false, "Coin": false} # The list of items the player can collect
+var items = {"Jewel": false, "Undefined": false, "Book": false, "Coin": false, "Heart": false, "Floppy": false} # The list of items the player can collect
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +21,10 @@ func hide_unfound_items():
 	if !items.Coin:
 		$Coin.hide()
 		$CoinText.hide()
+	if !items.Heart:
+		$Heart.hide()
+	if !items.Floppy:
+		$Floppy.hide()
 
 
 # Loads the save file to check for found items
@@ -39,6 +43,8 @@ func load_game():
 		items.Undefined = item_data.undefined
 		items.Book = item_data.book
 		items.Coin = item_data.coin
+		items.Heart = item_data.heart
+		items.Floppy = item_data.floppy
 		
 	save_game.close()
 

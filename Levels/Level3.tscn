@@ -1,0 +1,387 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Levels/Level.gd" type="Script" id=1]
+[ext_resource path="res://Obstacles/Obstacle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/GameUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/PlaceholderTile.png" type="Texture" id=5]
+[ext_resource path="res://Assets/PlaceholderTileOverpass.png" type="Texture" id=6]
+[ext_resource path="res://Levels/VictoryPoint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Items/Heart.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/soul-particles-15948.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Assets/369873__splicesound__trumpet-sad-chromatic-wah-wah.wav" type="AudioStream" id=10]
+[ext_resource path="res://Obstacles/Bystanders.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Items/Floppy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/LiberationSerif-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Obstacles/Birb1.tscn" type="PackedScene" id=14]
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0, 1 )
+colors = PoolColorArray( 0.0392157, 0, 0.403922, 1, 0, 0.0117647, 0.85098, 1, 0.498039, 0.513726, 0.858824, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 6 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 159, 47, 0, 47, 0, 0, 159, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 202.005, 67.0648, 35.9167, 68, 102.468, 37.5509, 165.546, 37.5509 )
+
+[sub_resource type="TileSet" id=8]
+0/name = "PlaceholderTile.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( -5, 0, 159, 47 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "PlaceholderTileOverpass.png 1"
+1/texture = ExtResource( 6 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 27, 19, 280, 68 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 3 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 159, 47, 0, 47, 0, 0, 159, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 202.005, 67.0648, 35.9167, 68, 102.468, 37.5509, 165.546, 37.5509 )
+
+[sub_resource type="TileSet" id=1]
+0/name = "PlaceholderTile.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( -5, 0, 159, 47 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 9 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "PlaceholderTileOverpass.png 1"
+1/texture = ExtResource( 6 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 27, 19, 280, 68 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 10 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[sub_resource type="DynamicFont" id=7]
+size = 35
+font_data = ExtResource( 13 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+level_time = 70
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 13195.0
+margin_top = -471.0
+margin_right = 15020.0
+margin_bottom = 14132.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_rotation = 90.0
+texture = SubResource( 5 )
+expand = true
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 90, 450 )
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 100, 500 )
+
+[node name="Obstacle" parent="." instance=ExtResource( 2 )]
+position = Vector2( 917, 516 )
+
+[node name="Obstacle2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2257, 516 )
+
+[node name="Obstacle3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2376, 516 )
+penalty = 3
+
+[node name="Obstacle16" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2463, 516 )
+penalty = 4
+
+[node name="Obstacle26" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2565, 516 )
+penalty = 5
+
+[node name="Obstacle4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4627, 514 )
+
+[node name="Obstacle50" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4914, 514 )
+penalty = 5
+
+[node name="Obstacle52" parent="." instance=ExtResource( 2 )]
+position = Vector2( 6222, 514 )
+penalty = 5
+
+[node name="Obstacle53" parent="." instance=ExtResource( 2 )]
+position = Vector2( 6357, 514 )
+penalty = 5
+
+[node name="Obstacle54" parent="." instance=ExtResource( 2 )]
+position = Vector2( 6505, 514 )
+penalty = 5
+
+[node name="Obstacle55" parent="." instance=ExtResource( 2 )]
+position = Vector2( 6902, 514 )
+penalty = 5
+
+[node name="Obstacle7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 7350, 516 )
+
+[node name="Obstacle8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 7589, 516 )
+penalty = 3
+
+[node name="Obstacle9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 7677, 516 )
+penalty = 4
+
+[node name="Obstacle51" parent="." instance=ExtResource( 2 )]
+position = Vector2( 7821, 516 )
+penalty = 3
+
+[node name="SpawnArea" type="Position2D" parent="."]
+position = Vector2( 1000, 520 )
+
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 40.0
+one_shot = true
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 8 )
+cell_size = Vector2( 150, 30 )
+format = 1
+tile_data = PoolIntArray( -1376172, 0, 0, -1310636, 0, 0, -1310635, 0, 0, -1245100, 0, 0, -1245099, 0, 0, -1245098, 0, 0, -1245097, 0, 0, -1245096, 0, 0, -1245095, 0, 0, -1179564, 0, 0, -1179563, 0, 0, -1179562, 0, 0, -1179561, 0, 0, -1179560, 0, 0, -1179559, 0, 0, -1048587, 0, 0, -1048586, 0, 0, -1048585, 0, 0, -1114028, 0, 0, -1114027, 0, 0, -1114026, 0, 0, -1114025, 0, 0, -1114024, 0, 0, -1114023, 0, 0, -983051, 0, 0, -983050, 0, 0, -983049, 0, 0, -1048492, 0, 0, -1048491, 0, 0, -1048490, 0, 0, -1048489, 0, 0, -1048488, 0, 0, -1048487, 0, 0, -917515, 0, 0, -917514, 0, 0, -917513, 0, 0, -982956, 0, 0, -982955, 0, 0, -982954, 0, 0, -982953, 0, 0, -982952, 0, 0, -982951, 0, 0, -851979, 0, 0, -851978, 0, 0, -851977, 0, 0, -917420, 0, 0, -917419, 0, 0, -917418, 0, 0, -917417, 0, 0, -917416, 0, 0, -917415, 0, 0, -786443, 0, 0, -786442, 0, 0, -786441, 0, 0, -851884, 0, 0, -851883, 0, 0, -851882, 0, 0, -851881, 0, 0, -851880, 0, 0, -851879, 0, 0, -720907, 0, 0, -720906, 0, 0, -720905, 0, 0, -786348, 0, 0, -786347, 0, 0, -786346, 0, 0, -786345, 0, 0, -786344, 0, 0, -786343, 0, 0, -655371, 0, 0, -655370, 0, 0, -655369, 0, 0, -720812, 0, 0, -720811, 0, 0, -720810, 0, 0, -720809, 0, 0, -720808, 0, 0, -720807, 0, 0, -589835, 0, 0, -589834, 0, 0, -589833, 0, 0, -655276, 0, 0, -655275, 0, 0, -655274, 0, 0, -655273, 0, 0, -655272, 0, 0, -655271, 0, 0, -524299, 0, 0, -524298, 0, 0, -524297, 0, 0, -589740, 0, 0, -589739, 0, 0, -589738, 0, 0, -589737, 0, 0, -589736, 0, 0, -589735, 0, 0, -458763, 0, 0, -458762, 0, 0, -458761, 0, 0, -524204, 0, 0, -524203, 0, 0, -524202, 0, 0, -524201, 0, 0, -524200, 0, 0, -524199, 0, 0, -393227, 0, 0, -393226, 0, 0, -393225, 0, 0, -458668, 0, 0, -458667, 0, 0, -458666, 0, 0, -458665, 0, 0, -458664, 0, 0, -458663, 0, 0, -327691, 0, 0, -327690, 0, 0, -327689, 0, 0, -393132, 0, 0, -393131, 0, 0, -393130, 0, 0, -393129, 0, 0, -393128, 0, 0, -393127, 0, 0, -262155, 0, 0, -262154, 0, 0, -262153, 0, 0, -327596, 0, 0, -327595, 0, 0, -327594, 0, 0, -327593, 0, 0, -327592, 0, 0, -327591, 0, 0, -196619, 0, 0, -196618, 0, 0, -196617, 0, 0, -262060, 0, 0, -262059, 0, 0, -262058, 0, 0, -262057, 0, 0, -262056, 0, 0, -262055, 0, 0, -131083, 0, 0, -131082, 0, 0, -131081, 0, 0, -196524, 0, 0, -196523, 0, 0, -196522, 0, 0, -196521, 0, 0, -196520, 0, 0, -196519, 0, 0, -65547, 0, 0, -65546, 0, 0, -65545, 0, 0, -130988, 0, 0, -130987, 0, 0, -130986, 0, 0, -130985, 0, 0, -130984, 0, 0, -130983, 0, 0, -11, 0, 0, -10, 0, 0, -9, 0, 0, -65452, 0, 0, -65451, 0, 0, -65450, 0, 0, -65449, 0, 0, -65448, 0, 0, -65447, 0, 0, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 84, 0, 0, 85, 0, 0, 86, 0, 0, 87, 0, 0, 88, 0, 0, 89, 0, 0, 131061, 0, 0, 131062, 0, 0, 131063, 0, 0, 65620, 0, 0, 65621, 0, 0, 65622, 0, 0, 65623, 0, 0, 65624, 0, 0, 65625, 0, 0, 196597, 0, 0, 196598, 0, 0, 196599, 0, 0, 131156, 0, 0, 131157, 0, 0, 131158, 0, 0, 131159, 0, 0, 131160, 0, 0, 131161, 0, 0, 262133, 0, 0, 262134, 0, 0, 262135, 0, 0, 196692, 0, 0, 196693, 0, 0, 196694, 0, 0, 196695, 0, 0, 196696, 0, 0, 196697, 0, 0, 327669, 0, 0, 327670, 0, 0, 327671, 0, 0, 262228, 0, 0, 262229, 0, 0, 262230, 0, 0, 262231, 0, 0, 262232, 0, 0, 262233, 0, 0, 393205, 0, 0, 393206, 0, 0, 393207, 0, 0, 327764, 0, 0, 327765, 0, 0, 327766, 0, 0, 327767, 0, 0, 327768, 0, 0, 327769, 0, 0, 458741, 0, 0, 458742, 0, 0, 458743, 0, 0, 393300, 0, 0, 393301, 0, 0, 393302, 0, 0, 393303, 0, 0, 393304, 0, 0, 393305, 0, 0, 524277, 0, 0, 524278, 0, 0, 524279, 0, 0, 458836, 0, 0, 458837, 0, 0, 458838, 0, 0, 458839, 0, 0, 458840, 0, 0, 458841, 0, 0, 589813, 0, 0, 589814, 0, 0, 589815, 0, 0, 524372, 0, 0, 524373, 0, 0, 524374, 0, 0, 524375, 0, 0, 524376, 0, 0, 524377, 0, 0, 655349, 0, 0, 655350, 0, 0, 655351, 0, 0, 589908, 0, 0, 589909, 0, 0, 589910, 0, 0, 589911, 0, 0, 589912, 0, 0, 589913, 0, 0, 720885, 0, 0, 720886, 0, 0, 720887, 0, 0, 655444, 0, 0, 655445, 0, 0, 655446, 0, 0, 655447, 0, 0, 655448, 0, 0, 655449, 0, 0, 786421, 0, 0, 786422, 0, 0, 786423, 0, 0, 720980, 0, 0, 720981, 0, 0, 720982, 0, 0, 720983, 0, 0, 720984, 0, 0, 720985, 0, 0, 851957, 0, 0, 851958, 0, 0, 851959, 0, 0, 786516, 0, 0, 786517, 0, 0, 786518, 0, 0, 786519, 0, 0, 786520, 0, 0, 786521, 0, 0, 917493, 0, 0, 917494, 0, 0, 917495, 0, 0, 852052, 0, 0, 852053, 0, 0, 852054, 0, 0, 852055, 0, 0, 852056, 0, 0, 852057, 0, 0, 983029, 0, 0, 983030, 0, 0, 983031, 0, 0, 917588, 0, 0, 917589, 0, 0, 917590, 0, 0, 917591, 0, 0, 917592, 0, 0, 917593, 0, 0, 1048565, 0, 0, 1048566, 0, 0, 1048567, 0, 0, 983124, 0, 0, 983125, 0, 0, 983126, 0, 0, 983127, 0, 0, 983128, 0, 0, 983129, 0, 0, 1114101, 0, 0, 1114102, 0, 0, 1114103, 0, 0, 1048660, 0, 0, 1048661, 0, 0, 1048662, 0, 0, 1048663, 0, 0, 1048664, 0, 0, 1048665, 0, 0, 1179637, 0, 0, 1179638, 0, 0, 1179639, 0, 0, 1114196, 0, 0, 1114197, 0, 0, 1114198, 0, 0, 1114199, 0, 0, 1114200, 0, 0, 1114201, 0, 0, 1245173, 0, 0, 1245174, 0, 0, 1245175, 0, 0, 1179732, 0, 0, 1179733, 0, 0, 1179734, 0, 0, 1179735, 0, 0, 1179736, 0, 0, 1179737, 0, 0, 1310709, 0, 0, 1310710, 0, 0, 1310711, 0, 0, 1310712, 0, 0, 1310713, 0, 0, 1310714, 0, 0, 1310715, 0, 0, 1310716, 0, 0, 1310717, 0, 0, 1310718, 0, 0, 1310719, 0, 0, 1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1245202, 0, 0, 1245203, 0, 0, 1245204, 0, 0, 1245205, 0, 0, 1245206, 0, 0, 1245207, 0, 0, 1245208, 0, 0, 1245209, 0, 0, 1245210, 0, 0, 1245211, 0, 0, 1245212, 0, 0, 1245213, 0, 0, 1245214, 0, 0, 1245215, 0, 0, 1245216, 0, 0, 1245217, 0, 0, 1245218, 0, 0, 1245219, 0, 0, 1245220, 0, 0, 1245221, 0, 0, 1245222, 0, 0, 1245223, 0, 0, 1245224, 0, 0, 1245225, 0, 0, 1245226, 0, 0, 1245227, 0, 0, 1245228, 0, 0, 1245229, 0, 0, 1245230, 0, 0, 1245231, 0, 0, 1245232, 0, 0, 1245233, 0, 0, 1245234, 0, 0, 1245235, 0, 0, 1245236, 0, 0, 1245237, 0, 0, 1245238, 0, 0, 1245239, 0, 0, 1245240, 0, 0, 1245241, 0, 0, 1245242, 0, 0, 1245243, 0, 0, 1245244, 0, 0, 1245245, 0, 0, 1245246, 0, 0, 1245247, 0, 0, 1245248, 0, 0, 1245249, 0, 0, 1245250, 0, 0, 1245251, 0, 0, 1245252, 0, 0, 1245253, 0, 0, 1245254, 0, 0, 1245255, 0, 0, 1245256, 0, 0, 1245257, 0, 0, 1245258, 0, 0, 1245259, 0, 0, 1245260, 0, 0, 1245261, 0, 0, 1245262, 0, 0, 1245263, 0, 0, 1245264, 0, 0, 1245265, 0, 0, 1245266, 0, 0, 1245267, 0, 0, 1245268, 0, 0, 1245269, 0, 0, 1245270, 0, 0, 1245271, 0, 0, 1245272, 0, 0, 1245273, 0, 0 )
+
+[node name="OverpassTiles" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 64, 30 )
+format = 1
+
+[node name="VictoryPoint" parent="." instance=ExtResource( 7 )]
+position = Vector2( 10888, 472 )
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 960, 540 )
+stream = ExtResource( 9 )
+volume_db = -10.0
+
+[node name="FailAudio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 960, 540 )
+stream = ExtResource( 10 )
+
+[node name="Obstacle10" parent="." instance=ExtResource( 11 )]
+position = Vector2( 9294, 445 )
+penalty = 5
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 219.0
+margin_top = 80.0
+margin_right = 849.0
+margin_bottom = 131.0
+custom_fonts/font = SubResource( 7 )
+text = "Press RMB or equivalent to restart
+Press MMB or equivalent to pause"
+
+[node name="Obstacle22" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1521, -82 )
+
+[node name="Obstacle23" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1703, -45 )
+
+[node name="Obstacle27" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1321, -217 )
+
+[node name="Obstacle11" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3604, 183 )
+
+[node name="Obstacle13" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3618, 43 )
+
+[node name="Obstacle17" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3805, -91 )
+
+[node name="Obstacle32" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3401, -38 )
+
+[node name="Obstacle33" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3536, -164 )
+
+[node name="Obstacle37" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3839, 96 )
+
+[node name="Obstacle39" parent="." instance=ExtResource( 14 )]
+position = Vector2( 2927, -546 )
+
+[node name="Obstacle28" parent="." instance=ExtResource( 14 )]
+position = Vector2( 5410, -105 )
+
+[node name="Obstacle46" parent="." instance=ExtResource( 14 )]
+position = Vector2( 5120, 34 )
+
+[node name="Obstacle40" parent="." instance=ExtResource( 14 )]
+position = Vector2( 5632, 21 )
+
+[node name="Obstacle41" parent="." instance=ExtResource( 14 )]
+position = Vector2( 6885, -159 )
+
+[node name="Obstacle31" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7563, 116 )
+
+[node name="Obstacle36" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7358, -84 )
+
+[node name="Obstacle44" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7128, -6 )
+
+[node name="Obstacle45" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7188, 194 )
+
+[node name="Obstacle48" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7088, 134 )
+
+[node name="Obstacle47" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7660, -86 )
+
+[node name="Obstacle18" parent="." instance=ExtResource( 14 )]
+position = Vector2( 8621, 38 )
+
+[node name="Obstacle19" parent="." instance=ExtResource( 14 )]
+position = Vector2( 8820, 88 )
+
+[node name="Obstacle20" parent="." instance=ExtResource( 14 )]
+position = Vector2( 8820, -53 )
+
+[node name="Obstacle49" parent="." instance=ExtResource( 14 )]
+position = Vector2( 10903, -107 )
+
+[node name="Obstacle56" parent="." instance=ExtResource( 14 )]
+position = Vector2( 11312, -327 )
+
+[node name="Obstacle57" parent="." instance=ExtResource( 14 )]
+position = Vector2( 10477, -327 )
+
+[node name="Obstacle58" parent="." instance=ExtResource( 14 )]
+position = Vector2( 10410, -174 )
+
+[node name="Obstacle21" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7969, 29 )
+
+[node name="Obstacle24" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7736, 154 )
+
+[node name="Obstacle25" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7386, 108 )
+
+[node name="Obstacle34" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7022, -138 )
+
+[node name="Obstacle38" parent="." instance=ExtResource( 14 )]
+position = Vector2( 6904, 4 )
+
+[node name="Obstacle43" parent="." instance=ExtResource( 14 )]
+position = Vector2( 7195, -129 )
+
+[node name="Obstacle29" parent="." instance=ExtResource( 14 )]
+position = Vector2( 6689, -166 )
+
+[node name="Obstacle30" parent="." instance=ExtResource( 14 )]
+position = Vector2( 4348, -519 )
+
+[node name="Obstacle35" parent="." instance=ExtResource( 14 )]
+position = Vector2( 5269, -648 )
+
+[node name="Obstacle42" parent="." instance=ExtResource( 14 )]
+position = Vector2( 5749, -455 )
+
+[node name="Obstacle6" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3557, -94 )
+
+[node name="Obstacle12" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1459, -4 )
+
+[node name="Obstacle14" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1476, -194 )
+
+[node name="Obstacle15" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3239, 187 )
+
+[node name="Heart" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2457, -168 )
+
+[node name="Floppy" parent="." instance=ExtResource( 12 )]
+position = Vector2( 8596, 435 )
+
+[connection signal="creating_overpass" from="Player" to="." method="_on_Player_creating_overpass"]
+[connection signal="decrease_time" from="Player" to="." method="timer_down"]
+[connection signal="victory" from="Player" to="." method="_on_Player_victory"]
+[connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]
+[connection signal="start_game" from="UI" to="." method="new_game"]
+[connection signal="unpause" from="UI" to="." method="unpause_game"]

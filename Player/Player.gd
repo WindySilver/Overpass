@@ -11,7 +11,7 @@ export var velocity = Vector2(1, 0) # The player's speed
 export var gravity = 50 # The gravity force pulling the player down when falling
 var screen_size # Size of the game window.
 var may_move = false # Keeps player from moving when they shouldn't
-var items = {"Jewel": false, "Undefined": false, "Book": false, "Coin": false} # The items the player can collect
+var items = {"Jewel": false, "Undefined": false, "Book": false, "Coin": false, "Heart": false, "Floppy": false} # The items the player can collect
 var still_in_air = false # Whether or not the player is still falling
 
 
@@ -82,6 +82,10 @@ func _physics_process(_delta):
 						items.Book = true
 					"Coin":
 						items.Coin = true
+					"Heart":
+						items.Heart = true
+					"Floppy":
+						items.Floppy = true
 					_:
 						items.Undefined = true
 				collision.collider.play_audio()

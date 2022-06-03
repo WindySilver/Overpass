@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/soul-particles-15948.mp3-0148a22b1ef5752eb05f3e0e4ff7a4ae.mp3str"
+
+[deps]
+
+source_file="res://Assets/soul-particles-15948.mp3"
+dest_files=[ "res://.import/soul-particles-15948.mp3-0148a22b1ef5752eb05f3e0e4ff7a4ae.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -121,7 +121,8 @@ Audio:
 \"Trumpet sad chromatic wah wah.wav\" by Splice Sound licensed under CC0 1.0
 \"Door Handle Wood Clack.aif\" by RutgerMuller licensed under CC0 1.0
 \"Single Bird Chirp\" by alegemaate licensed under CC0 1.0
-\"Technology Space Ambient\" and \"My Lonely Journey\" by AleXZavesa from Pixabay"
+\"Technology Space Ambient\" and \"My Lonely Journey\" by AleXZavesa from Pixabay
+\"Soul Particles\" by EvgenyBardyuzha from Pixabay"
 align = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]

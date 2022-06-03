@@ -1,8 +1,9 @@
 extends Node2D
 
 export var level_time = 15 # The time the player has to clear the level before game over
-var player_flipped = false
-var y_position = 0
+var player_flipped = false # Whether or not the player has been flipped around
+var y_position = 0 # The y distance between player and victory point
+var paused = false # Whether or not game is paused
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,6 +44,7 @@ func pause_game():
 	$Player.stop()
 	$LevelTimer.set_paused(true)
 	$UI.show_pause_menu()
+	paused = true
 
 
 # Unpauses the game and hides the pause menu
@@ -50,6 +52,7 @@ func unpause_game():
 	$Music.set_stream_paused(false)
 	$Player.unstop()
 	$LevelTimer.set_paused(false)
+	paused = false
 
 
 # Handles things that need to be done when the player fails the level
@@ -63,6 +66,12 @@ func game_over():
 
 # Starts/restarts the level
 func new_game():
+	if paused:
+		$UI/Message.hide()
+		$UI/ResumeButton.hide()
+		$UI/StartButton.hide()
+		$UI/MainMenuButton.hide()
+		unpause_game()
 	if $Player.velocity.x < 0:
 		$Player.velocity.x = $Player.velocity.x * -1
 	player_flipped = false
@@ -114,7 +123,7 @@ func _on_Player_victory():
 	save_game()
 
 
-# Saves the item data
+# Saves the item and level clearance data
 func save():
 	var save_dict = {
 		"filename" : get_filename(),
@@ -122,7 +131,9 @@ func save():
 		"jewel" : $Player.items.Jewel,
 		"undefined" : $Player.items.Undefined,
 		"book" : $Player.items.Book,
-		"coin" : $Player.items.Coin
+		"coin" : $Player.items.Coin,
+		"heart" : $Player.items.Heart,
+		"floppy" : $Player.items.Floppy,
 	}
 	return save_dict
 
@@ -152,6 +163,8 @@ func load_game():
 		$Player.items.Undefined = item_data.undefined
 		$Player.items.Book = item_data.book
 		$Player.items.Coin = item_data.coin
+		$Player.items.Heart = item_data.heart
+		$Player.items.Floppy = item_data.floppy
 
 	save_game.close()
 
