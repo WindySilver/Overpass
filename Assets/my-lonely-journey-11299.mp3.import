@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/my-lonely-journey-11299.mp3-733304165179971eb6535653f8126f57.mp3str"
+
+[deps]
+
+source_file="res://Assets/my-lonely-journey-11299.mp3"
+dest_files=[ "res://.import/my-lonely-journey-11299.mp3-733304165179971eb6535653f8126f57.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

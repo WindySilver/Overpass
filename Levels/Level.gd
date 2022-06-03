@@ -1,6 +1,8 @@
 extends Node2D
 
 export var level_time = 15 # The time the player has to clear the level before game over
+var player_flipped = false
+var y_position = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,8 +24,17 @@ func _process(_delta):
 # Processes physics things and in this case things that are related to things
 # processed by their own _physics_process functions
 func _physics_process(_delta):
+	y_position = $VictoryPoint.position.y - $Player.position.y
 	$Music.position = $Player.position
 	$FailAudio.position = $Player.position
+	if !player_flipped and $Player.position.x > $VictoryPoint.position.x and y_position < 30:
+		player_flipped = true
+		$Player.velocity.x = $Player.velocity.x * -1
+		$Player.flip_me()
+	elif player_flipped and $Player.position.x < $VictoryPoint.position.x:
+		player_flipped = false
+		$Player.velocity.x = $Player.velocity.x * -1
+		$Player.flip_me()
 
 
 # Pauses the game and brings up the pause menu
@@ -52,6 +63,9 @@ func game_over():
 
 # Starts/restarts the level
 func new_game():
+	if $Player.velocity.x < 0:
+		$Player.velocity.x = $Player.velocity.x * -1
+	player_flipped = false
 	$LevelTimer.set_paused(false)
 	$OverpassTiles.clear()
 	restore_obstacles_items()

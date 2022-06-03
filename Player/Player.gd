@@ -19,6 +19,8 @@ var still_in_air = false # Whether or not the player is still falling
 func start(pos):
 	position = pos
 	may_move = true
+	if $AnimatedSprite.flip_h:
+		$AnimatedSprite.flip_h = false
 
 
 # Stops the player character from moving
@@ -93,3 +95,8 @@ func hit_obstacle(var penalty):
 # Initiated restoring the downward velocity to keep player able to get past overpasses
 func _on_GravityTimer_timeout():
 	still_in_air = false
+
+
+# Flips the sprite horizontally
+func flip_me():
+	$AnimatedSprite.flip_h = !$AnimatedSprite.flip_h
