@@ -126,7 +126,7 @@ points = PoolVector2Array( 202.005, 67.0648, 35.9167, 68, 102.468, 37.5509, 165.
 size = 35
 font_data = ExtResource( 13 )
 
-[node name="Main" type="Node2D"]
+[node name="Level3" type="Node2D"]
 script = ExtResource( 1 )
 level_time = 70
 
@@ -247,7 +247,8 @@ margin_top = 80.0
 margin_right = 849.0
 margin_bottom = 131.0
 custom_fonts/font = SubResource( 7 )
-text = "Press RMB or equivalent to restart
+text = "Press LMB or equivalent to create overpasses
+Press RMB or equivalent to restart
 Press MMB or equivalent to pause"
 
 [node name="Obstacle22" parent="." instance=ExtResource( 14 )]
@@ -327,6 +328,12 @@ position = Vector2( 11312, -327 )
 
 [node name="Obstacle57" parent="." instance=ExtResource( 14 )]
 position = Vector2( 10477, -327 )
+
+[node name="Obstacle60" parent="." instance=ExtResource( 14 )]
+position = Vector2( 9779, 465 )
+
+[node name="Obstacle61" parent="." instance=ExtResource( 14 )]
+position = Vector2( 9842, 469 )
 
 [node name="Obstacle58" parent="." instance=ExtResource( 14 )]
 position = Vector2( 10410, -174 )

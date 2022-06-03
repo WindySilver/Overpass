@@ -4,11 +4,17 @@ signal start_game
 signal unpause
 
 
+var level = "Level" # The name of the current level
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	level = get_tree().get_current_scene().get_name()
 	$Message.hide()
 	$StartButton.hide()
 	$MainMenuButton.hide()
+	$NextLevelButton.hide()
+	print(level)
 
 
 # Chances the UI's text to the given text
@@ -31,6 +37,8 @@ func show_victory():
 	$StartButton.text = "Play again"
 	$StartButton.show()
 	$MainMenuButton.show()
+	if level == "Level1" or level == "Level2":
+		$NextLevelButton.show()
 
 
 # Formats the given time to a stable format
@@ -68,3 +76,15 @@ func _on_ResumeButton_pressed():
 	$MainMenuButton.hide()
 	$ResumeButton.hide()
 	emit_signal("unpause")
+
+
+# Handles moving to the next level if available when the button for it is pressed in the victory screen
+func _on_NextLevelButton_pressed():
+	UISound.play_sound()
+	match level:
+		"Level1":
+			var _change = get_tree().change_scene("res://Levels/Level2.tscn")
+		"Level2":
+			var _change = get_tree().change_scene("res://Levels/Level3.tscn")
+		_:
+			$Message.text = "Error - no next level available"
