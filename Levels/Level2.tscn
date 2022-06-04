@@ -218,6 +218,7 @@ stream = ExtResource( 10 )
 
 [node name="Obstacle10" parent="." instance=ExtResource( 11 )]
 position = Vector2( 6150, 445 )
+scale = Vector2( -0.5, 0.5 )
 penalty = 5
 
 [node name="Label" type="Label" parent="."]
@@ -266,16 +267,16 @@ position = Vector2( 8136, -123 )
 position = Vector2( 8663, -190 )
 
 [node name="Obstacle26" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1765, 460 )
+position = Vector2( 1915, 454 )
 
 [node name="Obstacle45" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1894, 435 )
+position = Vector2( 2044, 429 )
 
 [node name="Obstacle46" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1751, 368 )
+position = Vector2( 1901, 362 )
 
 [node name="Obstacle47" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1806, 401 )
+position = Vector2( 1956, 395 )
 
 [node name="Obstacle29" parent="." instance=ExtResource( 14 )]
 position = Vector2( 5841, -397 )
@@ -317,13 +318,13 @@ position = Vector2( 7364, 321 )
 position = Vector2( 7676, 271 )
 
 [node name="Book" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1440, 401 )
+position = Vector2( 1400, 397 )
 
 [node name="Coin" parent="." instance=ExtResource( 12 )]
 position = Vector2( 7287, 106 )
 
 [node name="Obstacle22" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1864, 343 )
+position = Vector2( 2014, 337 )
 
 [node name="Obstacle23" parent="." instance=ExtResource( 15 )]
 position = Vector2( 2485, 370 )

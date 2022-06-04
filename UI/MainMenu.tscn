@@ -112,7 +112,7 @@ margin_bottom = 267.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 2 )
-text = "Developer: Noora \"WindySilver\" Jokela
+text = "Programming & art: Noora \"WindySilver\" Jokela
 Audio:
 \"Crash.wav\" by Previsionary, licensed under CC0 1.0
 \"Generic Crowd Noise\" by SoundsAreGr8 licensed under CC0 1.0
